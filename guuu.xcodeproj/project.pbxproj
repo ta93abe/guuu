@@ -16,6 +16,7 @@
 		E68C69712477CC5600308368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68C696F2477CC5600308368 /* LaunchScreen.storyboard */; };
 		E68C697C2477CC5600308368 /* guuuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68C697B2477CC5600308368 /* guuuTests.swift */; };
 		E68C69872477CC5600308368 /* guuuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68C69862477CC5600308368 /* guuuUITests.swift */; };
+		E68C69972477CED400308368 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68C69962477CED400308368 /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E68C69822477CC5600308368 /* guuuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guuuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68C69862477CC5600308368 /* guuuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guuuUITests.swift; sourceTree = "<group>"; };
 		E68C69882477CC5600308368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E68C69962477CED400308368 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,10 @@
 		E68C69602477CC5500308368 /* guuu */ = {
 			isa = PBXGroup;
 			children = (
+				E68C69952477CEBA00308368 /* Models */,
+				E68C69942477CEAC00308368 /* Views */,
 				E68C69612477CC5500308368 /* AppDelegate.swift */,
 				E68C69632477CC5500308368 /* SceneDelegate.swift */,
-				E68C69682477CC5500308368 /* ContentView.swift */,
 				E68C696A2477CC5600308368 /* Assets.xcassets */,
 				E68C696F2477CC5600308368 /* LaunchScreen.storyboard */,
 				E68C69722477CC5600308368 /* Info.plist */,
@@ -137,6 +140,22 @@
 				E68C69882477CC5600308368 /* Info.plist */,
 			);
 			path = guuuUITests;
+			sourceTree = "<group>";
+		};
+		E68C69942477CEAC00308368 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E68C69682477CC5500308368 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E68C69952477CEBA00308368 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E68C69962477CED400308368 /* Restaurant.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68C69972477CED400308368 /* Restaurant.swift in Sources */,
 				E68C69622477CC5500308368 /* AppDelegate.swift in Sources */,
 				E68C69642477CC5500308368 /* SceneDelegate.swift in Sources */,
 				E68C69692477CC5500308368 /* ContentView.swift in Sources */,
