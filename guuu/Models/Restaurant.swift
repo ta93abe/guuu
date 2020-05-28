@@ -1,21 +1,25 @@
-//
-//  Restaurant.swift
-//  guuu
-//
-//  Created by Takumi Abe on 2020/05/22.
-//  Copyright © 2020 Takumi Abe. All rights reserved.
-//
-
 import SwiftUI
+import Foundation
+import MapKit
 
-struct Restaurant: Identifiable {
-    var id = UUID()
-    var name: String
-    var access: String
-    var thumbnail: String  // URL
-    var address: String
-    var phoneNumber: String
-    var openingTime: Date
-    var image: String  // URL
+
+struct Restaurant {
+    
+    let placemark: MKPlacemark
+    
+    var id: UUID {
+        return UUID()
+    }
+    
+    var name: String {
+        self.placemark.name ?? ""
+    }
+    
+    var title: String {
+        self.placemark.title ?? ""
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        self.placemark.coordinate
+    }
 }
-

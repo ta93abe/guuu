@@ -7,15 +7,66 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    
+    @State private var showModal: Bool = false
+    @State private var restaurants = [Restaurant]()
+    @State private var showList : Bool = false
+    
+    @ObservedObject private var shopListVM = ShopListViewModel()
+
     var body: some View {
-        Text("Hello, World!")
+        ZStack(alignment: .top) {
+            
+            
+            
+            MapView(restaurants: self.restaurants).edgesIgnoringSafeArea(.all)
+            
+            Text("guuu")
+                .font(Font.title.italic())
+                .fontWeight(.black)
+                .multilineTextAlignment(.center)
+            
+            QueryListView(shops: self.shopListVM.shops, showList: self.$showList).offset(y: showList ? 0 : 1000)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(Color.white)
+                            .shadow(radius: 20)
+                        Button(action: {
+                            self.showModal.toggle()
+                        }) {
+                            Image(systemName: "magnifyingglass")
+                                .font(.system(size: 30))
+                        }.sheet(isPresented: $showModal) {
+                            SearchModalView(
+                                restaurants: self.$restaurants,
+                                showModal: self.$showModal,
+                                showList: self.$showList,
+                                shopsSearch: self.shopListVM
+                                
+                            )
+                        }
+                    }
+                }
+                .padding()
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
+
