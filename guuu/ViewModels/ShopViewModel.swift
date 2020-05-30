@@ -78,5 +78,9 @@ class ShopViewModel: Identifiable {
         else { return s }
     }
     
+    var category : String {
+        return self.shop.category!
+    }
+    
 }
 

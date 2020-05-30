@@ -12,6 +12,7 @@ struct RestaurantDetail: View {
     var longitude: Double
     var image : String
     var payment : String
+    var category : String
     
     var body: some View {
         VStack {
@@ -39,6 +40,16 @@ struct RestaurantDetail: View {
             Form {
                 Section(header: Text("店舗情報")) {
                     VStack(alignment: .leading) {
+                        Text("カテゴリー").foregroundColor(Color.gray)
+                        Spacer()
+                        Text(category)
+                    }
+                    VStack(alignment: .leading) {
+                        Text("営業時間").foregroundColor(Color.gray)
+                        Spacer()
+                        Text(open)
+                    }
+                    VStack(alignment: .leading) {
                         Text("支払い方法").foregroundColor(Color.gray)
                         Spacer()
                         Text(payment)
@@ -53,11 +64,7 @@ struct RestaurantDetail: View {
                         Spacer()
                         Text(tel)
                     }
-                    VStack(alignment: .leading) {
-                        Text("営業時間").foregroundColor(Color.gray)
-                        Spacer()
-                        Text(open)
-                    }
+                    
                 
                 }
             }

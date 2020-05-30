@@ -11,7 +11,7 @@ struct QueryListView: View {
     var body: some View {
         NavigationView {
             List(self.shops, id: \.id) { shop in
-                NavigationLink(destination: RestaurantDetail(shopName: shop.name, address: shop.address, tel: shop.tel, open: shop.openTime, latitude: Double(shop.latitude)!, longitude: Double(shop.longitude)!, image: shop.image, payment: shop.cashless)) {
+                NavigationLink(destination: RestaurantDetail(shopName: shop.name, address: shop.address, tel: shop.tel, open: shop.openTime, latitude: Double(shop.latitude)!, longitude: Double(shop.longitude)!, image: shop.image, payment: shop.cashless, category: shop.category)) {
                     QueryCard(title: shop.name, access: shop.access, image: shop.image)
                         .padding()
                 }
