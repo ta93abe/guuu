@@ -1,11 +1,3 @@
-//
-//  RestaurantDetail.swift
-//  guuu
-//
-//  Created by Takumi Abe on 2020/05/22.
-//  Copyright © 2020 Takumi Abe. All rights reserved.
-//
-
 import SwiftUI
 import MapKit
 import URLImage
@@ -19,6 +11,7 @@ struct RestaurantDetail: View {
     var latitude: Double
     var longitude: Double
     var image : String
+    var payment : String
     
     var body: some View {
         VStack {
@@ -46,6 +39,11 @@ struct RestaurantDetail: View {
             Form {
                 Section(header: Text("店舗情報")) {
                     VStack(alignment: .leading) {
+                        Text("支払い方法").foregroundColor(Color.gray)
+                        Spacer()
+                        Text(payment)
+                    }
+                    VStack(alignment: .leading) {
                         Text("住所").foregroundColor(Color.gray)
                         Spacer()
                         Text(address)
@@ -65,13 +63,5 @@ struct RestaurantDetail: View {
             }
             .padding(.top, -50)
         }
-    }
-}
-
-
-
-struct RestaurantDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        RestaurantDetail(shopName: "ここ", address: "住所", tel: "電話番号", open: "営業時間", latitude: 35.65858, longitude: 139.745433, image: "")
     }
 }

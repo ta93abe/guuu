@@ -70,7 +70,13 @@ class ShopViewModel: Identifiable {
         if i1 == "" && i2 == "" { return "https://github.com/ta93abe/sample-resource-files/blob/master/kingyo.png?raw=true" }
         if i1 == "" && i2 != "" { return i2 }
         return i1
-        
     }
+    
+    var cashless : String {
+        let s = self.shop.card! + self.shop.eMoney!
+        if s == "" { return "現金のみ" }
+        else { return s }
+    }
+    
 }
 

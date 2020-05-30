@@ -13,6 +13,8 @@ struct Shop : Codable {
     var openTime: String?
     var access : Access
     var image : ImageURL
+    var card : String?
+    var eMoney : String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -23,6 +25,8 @@ struct Shop : Codable {
         case openTime = "opentime"
         case access
         case image = "image_url"
+        case card = "credit_card"
+        case eMoney = "e_money"
     }
     
     
