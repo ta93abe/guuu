@@ -7,6 +7,7 @@ struct SearchModalView: View {
     
     // MARK: - properties
     @Binding var restaurants : [Restaurant]
+    @Binding var shopPins : [ShopPins]
     @Binding var showModal : Bool
     @Binding var showList : Bool
     @ObservedObject private var locationManager = LocationManager()
@@ -39,6 +40,9 @@ struct SearchModalView: View {
         }
     }
     
+    private func getNearByShops() {
+        
+    }
     
     // MARK: - view
     var body: some View {
@@ -63,28 +67,29 @@ struct SearchModalView: View {
                         }
                     }
                 }
-                
 
-                    Button(action: {
-                        let range = self.selectedTime + 2
-                        let myLocation = self.locationManager.location?.coordinate
-                        self.getNearByRestaurants()
-                        self.showModal.toggle()
-                        self.showList = true
-                        self.shopsSearch.fecthShops(range: range, latitude: myLocation!.latitude, longitude: myLocation!.longitude)
-                        print(myLocation!.latitude)
-                        print(myLocation!.longitude)
-                        print(range)
-                    }) {
-                        
-                            Text("Search")
-                            Image(systemName: "magnifyingglass")
-                    }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(40)
+                Button(action: {
+                    let range = self.selectedTime + 2
+                    let myLocation = self.locationManager.location?.coordinate
+                    self.getNearByRestaurants()
+                    self.getNearByShops()
+                    self.showModal.toggle()
+                    self.showList = true
+                    self.shopsSearch.fetchShops(range: range, latitude: myLocation!.latitude, longitude: myLocation!.longitude)
+//                    print(myLocation!.latitude)
+//                    print(myLocation!.longitude)
+//                    print(range)
+                }) {
+                    
+                        Text("Search")
+                        Image(systemName: "magnifyingglass")
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(40)
         }
+            .padding(.vertical)
     }
 }
 

@@ -1,17 +1,10 @@
-//
-//  MapView.swift
-//  guuu
-//
-//  Created by Takumi Abe on 2020/05/24.
-//  Copyright © 2020 Takumi Abe. All rights reserved.
-//
-
 import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
     
     let restaurants: [Restaurant]
+    let shopPins : [ShopPins]
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -32,7 +25,12 @@ struct MapView: UIViewRepresentable {
         mapView.removeAnnotations(mapView.annotations)
         let annotations = self.restaurants.map(RestaurantAnnotation.init)
         mapView.addAnnotations(annotations)
-        
+    }
+    
+    private func updateShopAnnotations(from mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
+        let annotations = self.shopPins.map(ShopAnnotation.init)
+        mapView.addAnnotations(annotations)
     }
 }
 

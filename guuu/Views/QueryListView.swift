@@ -20,7 +20,7 @@ struct QueryListView: View {
             .navigationBarItems(leading: Button(action: {
                 self.showList = false
             }, label: {
-                Image(systemName: "arrow.left")
+                Image(systemName: "chevron.left")
             }))
 
         }

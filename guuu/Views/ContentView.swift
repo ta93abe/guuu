@@ -14,15 +14,14 @@ struct ContentView: View {
     @State private var showModal: Bool = false
     @State private var restaurants = [Restaurant]()
     @State private var showList : Bool = false
+    @State private var shopPins = [ShopPins]()
     
     @ObservedObject private var shopListVM = ShopListViewModel()
 
     var body: some View {
         ZStack(alignment: .top) {
-            
-            
-            
-            MapView(restaurants: self.restaurants).edgesIgnoringSafeArea(.all)
+             
+            MapView(restaurants: self.restaurants, shopPins: self.shopPins).edgesIgnoringSafeArea(.all)
             
             Text("guuu")
                 .font(Font.title.italic())
@@ -48,6 +47,7 @@ struct ContentView: View {
                         }.sheet(isPresented: $showModal) {
                             SearchModalView(
                                 restaurants: self.$restaurants,
+                                shopPins: self.$shopPins,
                                 showModal: self.$showModal,
                                 showList: self.$showList,
                                 shopsSearch: self.shopListVM
@@ -56,7 +56,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding()
+            .padding()
             }
         }
     }
@@ -65,7 +65,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+           ContentView()
+              .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+              .previewDisplayName("iPhone SE")
         }
     }
 }

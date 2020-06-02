@@ -1,11 +1,3 @@
-//
-//  RestaurantMapView.swift
-//  guuu
-//
-//  Created by Takumi Abe on 2020/05/27.
-//  Copyright © 2020 Takumi Abe. All rights reserved.
-//
-
 import SwiftUI
 import MapKit
 
@@ -16,9 +8,9 @@ struct RestaurantMapView: UIViewRepresentable {
     var longitude: Double
     
     // MARK: - map view
-    
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
+        map.showsUserLocation = true
         return map
     }
     
@@ -32,14 +24,7 @@ struct RestaurantMapView: UIViewRepresentable {
         let annotation = MKPointAnnotation()
         annotation.coordinate = restaurantLocation
         uiView.addAnnotation(annotation)
-
-        
     }
     
-}
-
-struct RestaurantMapView_Previews: PreviewProvider {
-    static var previews: some View {
-        RestaurantMapView(latitude: 35.65858, longitude: 139.745433)
-    }
+    
 }
