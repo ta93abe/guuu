@@ -28,7 +28,9 @@ struct ContentView: View {
                 .fontWeight(.black)
                 .multilineTextAlignment(.center)
             
-            QueryListView(shops: self.shopListVM.shops, showList: self.$showList).offset(y: showList ? 0 : 1000)
+            QueryListView(shops: self.shopListVM.shops, showList: self.$showList)
+                .offset(y: showList ? 0 : 1000)
+                .animation(.default)
             
             VStack {
                 Spacer()

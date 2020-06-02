@@ -18,6 +18,9 @@ struct SearchModalView: View {
     @State private var selectedTime : Int = 0
     let colors = ["5分", "10分", "20分"]
     
+    @State private var selectPayment : Int = 1
+    let payments = ["現金のみ", "キャッシュレス可"]
+    
     // MARK: - function
     private func getNearByRestaurants() {
         guard let location = self.locationManager.location else {
@@ -52,7 +55,7 @@ struct SearchModalView: View {
                     .padding()
                 
                 Form {
-                    Section(header: Text("ここから歩いて \(selectedTime)")) {
+                    Section(header: Text("ここから歩いて")) {
                        Picker(selection: $selectedTime, label: Text("徒歩")) {
                           Text(self.colors[0]).tag(0)
                           Text(self.colors[1]).tag(1)
@@ -60,12 +63,15 @@ struct SearchModalView: View {
                        }
                        .pickerStyle(SegmentedPickerStyle())
                     }
-                
-                    Section(header: Text("キーワード検索")) {
-                        TextField("キーワード検索", text: self.$search, onEditingChanged: { _ in }) {
-                            self.getNearByRestaurants()
-                        }
+                    
+                    Section(header: Text("支払い")) {
+                       Picker(selection: $selectPayment, label: Text("支払い")) {
+                          Text(self.payments[0]).tag(0)
+                          Text(self.payments[1]).tag(1)
+                       }
+                       .pickerStyle(SegmentedPickerStyle())
                     }
+                
                 }
 
                 Button(action: {
@@ -75,10 +81,9 @@ struct SearchModalView: View {
                     self.getNearByShops()
                     self.showModal.toggle()
                     self.showList = true
-                    self.shopsSearch.fetchShops(range: range, latitude: myLocation!.latitude, longitude: myLocation!.longitude)
-//                    print(myLocation!.latitude)
-//                    print(myLocation!.longitude)
-//                    print(range)
+                    self.shopsSearch.fetchShops(range: range, latitude: myLocation!.latitude, longitude: myLocation!.longitude,
+                                                payments: self.selectPayment)
+
                 }) {
                     
                         Text("Search")
