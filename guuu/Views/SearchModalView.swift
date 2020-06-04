@@ -21,6 +21,9 @@ struct SearchModalView: View {
     @State private var selectPayment : Int = 1
     let payments = ["現金のみ", "キャッシュレス可"]
     
+    @State private var selectedPayment: Bool = false
+    @State private var selectedTakeout: Bool = false
+    
     // MARK: - function
     private func getNearByRestaurants() {
         guard let location = self.locationManager.location else {
@@ -65,24 +68,29 @@ struct SearchModalView: View {
                     }
                     
                     Section(header: Text("支払い")) {
-                       Picker(selection: $selectPayment, label: Text("支払い")) {
-                          Text(self.payments[0]).tag(0)
-                          Text(self.payments[1]).tag(1)
-                       }
-                       .pickerStyle(SegmentedPickerStyle())
+                        Toggle(isOn: $selectedPayment) {
+                            Text("キャッシュレス")
+                        }
                     }
                 
+                    Section(header: Text("テイクアウト")) {
+                        Toggle(isOn: $selectedTakeout) {
+                            Text("テイクアウトあり")
+                        }
+                    }
                 }
 
                 Button(action: {
                     let range = self.selectedTime + 2
                     let myLocation = self.locationManager.location?.coordinate
+                    let pay = self.selectedPayment ? 1 : 0
+                    let takeout = self.selectedTakeout ? 1 : 0
                     self.getNearByRestaurants()
                     self.getNearByShops()
                     self.showModal.toggle()
                     self.showList = true
                     self.shopsSearch.fetchShops(range: range, latitude: myLocation!.latitude, longitude: myLocation!.longitude,
-                                                payments: self.selectPayment)
+                                                payments: pay, takeout: takeout)
 
                 }) {
                     

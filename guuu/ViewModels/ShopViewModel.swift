@@ -1,5 +1,3 @@
-
-
 import SwiftUI
 import Combine
 import MapKit
@@ -9,8 +7,8 @@ class ShopListViewModel: ObservableObject {
     
     @Published var shops: [ShopViewModel] = [ShopViewModel]()
 
-    func fetchShops(range: Int, latitude: Double, longitude: Double, payments: Int) {
-        ShopData().getData(range: range, latitude: latitude, longitude: longitude, card: payments, emoney: payments) { shops in
+    func fetchShops(range: Int, latitude: Double, longitude: Double, payments: Int, takeout: Int) {
+        ShopData().getData(range: range, latitude: latitude, longitude: longitude, card: payments, emoney: payments, takeout: takeout) { shops in
             if let shops = shops {
                 self.shops = shops.map(ShopViewModel.init)
             }

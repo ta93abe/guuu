@@ -4,10 +4,6 @@ struct QueryListView: View {
     let shops: [ShopViewModel]
     @Binding var showList : Bool
     
-//    init(shops: [ShopViewModel]) {
-//        self.shops = shops
-//    }
-    
     var body: some View {
         NavigationView {
             List(self.shops, id: \.id) { shop in

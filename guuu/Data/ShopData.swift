@@ -5,11 +5,11 @@ import MapKit
 
 class ShopData {
 
-    let baseURL = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e5947985a13a91c03a6718dcc51e2f96&hit_per_page=10"
+    let baseURL = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e5947985a13a91c03a6718dcc51e2f96&hit_per_page=23"
 
 
-    func getData(range: Int, latitude: Double, longitude: Double, card: Int, emoney: Int, completion: @escaping ([Shop]?) -> ()) {
-        guard let url = URL(string: "\(baseURL)&range=\(range)&latitude=\(latitude)&longitude=\(longitude)&card=\(card)&e_money=\(emoney)") else {
+    func getData(range: Int, latitude: Double, longitude: Double, card: Int, emoney: Int, takeout: Int, completion: @escaping ([Shop]?) -> ()) {
+        guard let url = URL(string: "\(baseURL)&range=\(range)&latitude=\(latitude)&longitude=\(longitude)&card=\(card)&e_money=\(emoney)&takeout=\(takeout)") else {
             completion(nil)
             return
         }
